@@ -27,6 +27,8 @@ public class CustomerController {
     @PostMapping("/add")
     @Operation(summary = "Add new customer ",
     description = "Adds new customer")
+    @ApiResponses(value = {@ApiResponse(responseCode = "200" , description = "Success"),
+            @ApiResponse(responseCode = "400", description = "Bad Request")})
     public ResponseEntity<Object> addNewCustomer(@RequestBody CustomerDetails customerDetails){
 
         return bankService.addNewCustomer(customerDetails);
@@ -35,6 +37,8 @@ public class CustomerController {
     @GetMapping("/{customerNumber}")
     @Operation(summary = "Find customer by customer number ",
     description = "Finds customer with the given customer number")
+    @ApiResponses(value = {@ApiResponse(responseCode = "200" , description = "Success"),
+            @ApiResponse(responseCode = "400", description = "Bad Request")})
     public ResponseEntity<Object> findByCustomerNumber(@PathVariable Long customerNumber){
 
         return bankService.findByCustomerNumber(customerNumber);
@@ -44,6 +48,8 @@ public class CustomerController {
     @GetMapping()
     @Operation(summary = "Find all customer ",
     description = "Returns the total list of customers")
+    @ApiResponses(value = {@ApiResponse(responseCode = "200" , description = "Success"),
+            @ApiResponse(responseCode = "400", description = "Bad Request")})
     public List<CustomerDetails> findAllCustomers(){
 
         return bankService.findAllCustomers();
@@ -52,6 +58,8 @@ public class CustomerController {
     @DeleteMapping("/delete/{customerNumber}")
     @Operation(summary = "Delete by customer number ",
     description = "Deletes a customer by customer number")
+    @ApiResponses(value = {@ApiResponse(responseCode = "200" , description = "Success"),
+            @ApiResponse(responseCode = "400", description = "Bad Request")})
     public ResponseEntity<Object> deleteByCustomerNumber(@PathVariable Long customerNumber){
 
         return bankService.deleteByCustomerNumber(customerNumber);
@@ -61,6 +69,8 @@ public class CustomerController {
     @PutMapping("/update/{customerNumber}")
     @Operation(summary = "Update by customer number",
     description = "Updates a customer details by customer number")
+    @ApiResponses(value = {@ApiResponse(responseCode = "200" , description = "Success"),
+            @ApiResponse(responseCode = "400", description = "Bad Request")})
     public ResponseEntity<Object> updateByCustomerNumber(@PathVariable Long customerNumber ,@RequestBody CustomerDetails customerDetails){
 
         return bankService.updateByCustomerNumber(customerNumber, customerDetails);
